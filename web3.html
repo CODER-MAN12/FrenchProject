@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGAM | Personal Website</title>
+
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --panel: #161616;
+      --accent: #00ff66;
+      --text: #eaeaea;
+      --muted: #b0b0b0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Courier New", monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #000;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    nav .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h1 {
+      color: var(--accent);
+      font-size: 1.4rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 6rem 2rem;
+      background: radial-gradient(circle at top, #003d1f, #000);
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    section h3 {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    section p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--panel);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,255,102,0.15);
+    }
+
+    .card h4 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    /* ===== GAME ===== */
+    #field {
+      width: 100%;
+      height: 400px;
+      background: repeating-linear-gradient(
+        90deg,
+        #1b5e20,
+        #1b5e20 40px,
+        #2e7d32 40px,
+        #2e7d32 80px
+      );
+      border: 4px solid white;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    #player {
+      width: 18px;
+      height: 18px;
+      background: #00e5ff;
+      position: absolute;
+      left: 20px;
+      top: 180px;
+    }
+
+    #ball {
+      width: 10px;
+      height: 10px;
+      background: #fff176;
+      position: absolute;
+    }
+
+    .defender {
+      width: 18px;
+      height: 18px;
+      background: #ff1744;
+      position: absolute;
+    }
+
+    #goal {
+      position: absolute;
+      right: 0;
+      top: 140px;
+      width: 10px;
+      height: 120px;
+      background: white;
+    }
+
+    #hud {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.3rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #000;
+      padding: 4rem 2rem;
+      margin-top: 5rem;
+      border-top: 4px solid var(--accent);
+      text-align: center;
+    }
+
+    footer p {
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-container">
+    <h1>AGAM</h1>
+    <ul>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#coding">Codage</a></li>
+      <li><a href="#game">Jeu</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div>
+      <h2>Développeur & Joueur de Rugby</h2>
+      <p>
+        Curieux, motivé et passionné par la technologie, je crée des projets
+        et relève des défis aussi bien sur le terrain de rugby que devant un écran.
+        Mon objectif est de combiner passion et apprentissage, en explorant de nouvelles
+        technologies tout en m’amusant avec le codage et les jeux rétro.
+        Je m'efforce de toujours progresser, d’expérimenter et de transformer mes idées
+        en créations concrètes et utiles.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <h3>Qui suis-je ?</h3>
+  <p>
+    Le rugby n’est pas seulement un sport pour moi, c’est une école de vie. Il m’a appris
+    la discipline, l’esprit d’équipe et la persévérance. Sur le terrain, je développe
+    ma capacité à réagir rapidement, à prendre des décisions et à travailler avec d’autres
+    pour atteindre un objectif commun. Ces compétences me servent également dans mes projets
+    technologiques et mes activités quotidiennes.
+  </p>
+  <p>
+    En dehors du sport, je suis passionné par l’apprentissage continu. La technologie m’inspire
+    à explorer de nouvelles idées, à comprendre comment les choses fonctionnent et à créer
+    des solutions innovantes. Que ce soit pour résoudre un problème technique ou pour améliorer
+    un projet existant, je cherche toujours à donner le meilleur de moi-même.
+  </p>
+  <div class="card-grid">
+    <div class="card">
+      <h4>Esprit</h4>
+      <p>
+        Curieux et motivé, j’aime découvrir de nouveaux horizons et tester mes compétences
+        dans des contextes variés, du sport aux projets créatifs.
+      </p>
+    </div>
+    <div class="card">
+      <h4>Technologie</h4>
+      <p>
+        Comprendre le fonctionnement des systèmes et créer mes propres projets me passionne.
+        Je prends plaisir à explorer de nouveaux langages et outils pour améliorer mes compétences.
+      </p>
+    </div>
+    <div class="card">
+      <h4>Objectif</h4>
+      <p>
+        Mon objectif est de progresser chaque jour et d’utiliser mes connaissances pour
+        transformer mes idées en projets concrets et utiles, tout en m’amusant et en apprenant.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CODING -->
+<section id="coding">
+  <h3>Le codage comme passion</h3>
+  <p>
+    Le codage est une activité qui me fascine depuis longtemps. Il me permet de comprendre
+    la logique derrière chaque programme et de créer des projets qui reflètent ma créativité.
+    Chaque ligne de code est un petit défi que je relève avec plaisir, qu’il s’agisse de résoudre
+    un problème complexe ou d’améliorer un projet existant.
+  </p>
+  <p>
+    J’aime passer du temps à expérimenter différents langages et technologies. Cela m’aide
+    à développer ma logique, ma patience et ma capacité à penser de manière critique.
+    Le codage est pour moi une forme d’expression et un moyen concret de transformer
+    mes idées en quelque chose de tangible et utile.
+  </p>
+  <div class="card">
+    <h4>Projets récents</h4>
+    <p>
+      J’ai travaillé sur des petits jeux rétro, des outils web interactifs et des projets
+      expérimentaux avec JavaScript et Python. Ces projets m’ont permis de mieux comprendre
+      la programmation et de m’améliorer constamment.
+    </p>
+  </div>
+</section>
+
+
+
+<footer>
+  <p>© 2026 AGAM — Personal Website</p>
+</footer>
+
+<section id="game">
+  <h3>Jeu de football rétro 🏈</h3>
+  <p>
+    Contrôlez votre joueur avec <strong>W A S D</strong>, évitez les défenseurs et marquez des touchdowns.
+    Vous pouvez maintenant passer le ballon à un coéquipier automatique pour créer un vrai style football.
+  </p>
+
+  <div id="field">
+    <div id="player"></div>
+    <div id="ball"></div>
+    <div id="goal"></div>
+  </div>
+
+  <div id="hud">
+    <div>Score : <span id="score">0</span></div>
+    <div>Vies : <span id="lives">3</span></div>
+  </div>
+</section>
+
+<script>
+const field = document.getElementById("field");
+const player = document.getElementById("player");
+const ball = document.getElementById("ball");
+const scoreEl = document.getElementById("score");
+const livesEl = document.getElementById("lives");
+
+let x = 20, y = 180;
+let score = 0;
+let lives = 3;
+let keys = {};
+let speed = 5;
+
+// Defenders array
+let defenders = [];
+
+document.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
+document.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
+
+// Player movement with smoother acceleration
+function movePlayer() {
+  if(keys.w) y -= speed;
+  if(keys.s) y += speed;
+  if(keys.a) x -= speed;
+  if(keys.d) x += speed;
+
+  x = Math.max(0, Math.min(field.clientWidth - 20, x));
+  y = Math.max(0, Math.min(field.clientHeight - 20, y));
+
+  player.style.left = x + "px";
+  player.style.top = y + "px";
+
+  // Ball follows player
+  ball.style.left = x + 4 + "px";
+  ball.style.top = y + 4 + "px";
+}
+
+// Spawn defenders
+function spawnDefender() {
+  const d = document.createElement("div");
+  d.className = "defender";
+  d.style.left = field.clientWidth + "px";
+  d.style.top = Math.random() * (field.clientHeight - 20) + "px";
+  field.appendChild(d);
+  defenders.push(d);
+}
+
+// Defenders chase player (basic AI)
+function moveDefenders() {
+  defenders.forEach((d, index) => {
+    let dx = player.offsetLeft - d.offsetLeft;
+    let dy = player.offsetTop - d.offsetTop;
+    let dist = Math.sqrt(dx*dx + dy*dy);
+    let speedD = 2 + Math.random(); // variable speed
+    d.style.left = d.offsetLeft + (dx / dist) * speedD + "px";
+    d.style.top = d.offsetTop + (dy / dist) * speedD + "px";
+
+    // Collision
+    if(collision(player, d)){
+      lives--;
+      livesEl.textContent = lives;
+      resetPlayer();
+      d.remove();
+      defenders.splice(index,1);
+      if(lives <= 0){
+        alert("Game Over! Score: " + score);
+        location.reload();
+      }
+    }
+
+    // Remove if off-field
+    if(d.offsetLeft < -20 || d.offsetLeft > field.clientWidth+20 || d.offsetTop < -20 || d.offsetTop > field.clientHeight+20){
+      d.remove();
+      defenders.splice(index,1);
+    }
+  });
+}
+
+// Collision detection
+function collision(a,b){
+  const r1 = a.getBoundingClientRect();
+  const r2 = b.getBoundingClientRect();
+  return !(r1.right < r2.left || r1.left > r2.right || r1.bottom < r2.top || r1.top > r2.bottom);
+}
+
+function resetPlayer(){
+  x = 20;
+  y = 180;
+}
+
+// Score detection
+function checkScore(){
+  if(x > field.clientWidth - 30 && y > 140 && y < 260){
+    score++;
+    scoreEl.textContent = score;
+    resetPlayer();
+  }
+}
+
+// Main game loop
+function gameLoop(){
+  movePlayer();
+  moveDefenders();
+  checkScore();
+  requestAnimationFrame(gameLoop);
+}
+
+// Spawn defenders every 1.5s
+setInterval(spawnDefender, 1500);
+gameLoop();
+</script>
+
+</body>
+</html>
